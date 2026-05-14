@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Data.SqlClient;
+using System.Diagnostics;
 namespace ADO
 {
     internal class Program
@@ -36,11 +37,20 @@ namespace ADO
 
 
 #endif
-            //Insert("INSERT Directors(director_id, first_name,last_name) VALUES (7, N'Gray', N'Scott')");
+            ////Insert($"INSERT Directors(director_id, first_name,last_name) VALUES ({GetNextPrimaryKey("Directors")}, N'Gray', N'Scott')");
+            //Insert("Directors", "director_id,first_name,last_name", $"{GetNextPrimaryKey("Directors")},N'Sheldon',N'Letich'");
             //Select("*", "Directors");
-            Console.WriteLine(GetPrimeryKeyColumnName("Movies"));
-            Console.WriteLine(GetLastPrimaryKey("Movies"));
-            Console.WriteLine(GetNextPrimaryKey("Movies"));
+            //Console.WriteLine(GetPrimeryKeyColumnName("Movies"));
+            //Console.WriteLine(GetLastPrimaryKey("Movies"));
+            //Console.WriteLine(GetNextPrimaryKey("Movies"));
+            Insert
+            (
+                "Movies", "movied_id, title,release_date,director", $"{GetNextPrimaryKey("Movies")}, N'Avatar',N'2009-12-17',1"
+            );
+            Select("movied_id,title,release_date,first_name,last_name", 
+                
+                "Movies,Directors", 
+                "director = director_id");
         }
         static string GetPrimeryKeyColumnName(string table)
         {
@@ -56,6 +66,23 @@ namespace ADO
         static object GetNextPrimaryKey(string table)
         {
             return (int)GetLastPrimaryKey(table) + 1;
+        }
+        static void Insert(string table, string fields, string values)
+        {
+            string pk = GetPrimeryKeyColumnName(table);
+            string[] s_fields = fields.Split(',');
+            string[] s_values = values.Split(',');
+            if (s_fields.Length != s_values.Length) return;
+            string condition = "";
+            
+            for(int i = 0; i< s_fields.Length;i++)
+            {
+                if (s_fields[i].ToLower() == pk.ToLower()) continue;
+                condition += $"{s_fields[i]} = {s_values[i]}";
+                if (i != s_fields.Length - 1) condition += " AND ";
+            }
+            if (Scalar($"SELECT {GetPrimeryKeyColumnName(table)} FROM {table} WHERE {condition}") == null)
+            Insert($"INSERT {table}({fields}) VALUES({values})");
         }
         static void Insert(string cmd)
         {
