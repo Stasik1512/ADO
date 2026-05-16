@@ -46,9 +46,9 @@ namespace ADO
             //Console.WriteLine(GetNextPrimaryKey("Movies"));
             connector.Insert
             (
-                "Movies", "movied_id, title,release_date,director", $"{connector.GetNextPrimaryKey("Movies")}, N'Avatar',N'2009-12-17',1"
+                "Movies", "movied_id, title, release_date, director", $"{connector.GetNextPrimaryKey("Movies")}, N'Avatar',N'2009-12-17',1"
             );
-            connector.Select("movied_id,title,release_date,first_name,last_name",
+            connector.Select("movied_id, title, release_date, first_name, last_name",
 
                 "Movies,Directors",
                 "director = director_id");

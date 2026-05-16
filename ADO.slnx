@@ -1,6 +1,7 @@
 <Solution>
   <Project Path="ADO/ADO.csproj" Id="ff10d43b-e010-44a5-939a-c6e5285092b0" />
   <Project Path="Check/Check.csproj" Id="a97d74e5-e486-45d8-ae04-6212e2313110" />
-  <Project Path="DBtools/DBtools.csproj" Id="d38f6b38-7465-4f8f-88fc-7049e1cdf285" />
+  <Project Path="DBtools/DBtools.csproj" Id="b13dbaed-bd41-4af7-ba0c-75b90ef5828b" />
   <Project Path="DDL/DDL.csproj" Id="caf3978b-8e3c-48d6-bfa4-70fd5435811d" />
+  <Project Path="DLLcheck/DLLcheck.csproj" Id="16054246-d729-4ed2-8f2a-5bdbc2d28072" />
 </Solution>
