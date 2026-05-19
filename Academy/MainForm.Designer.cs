@@ -30,42 +30,67 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
+			this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tabPageGroups = new System.Windows.Forms.TabPage();
 			this.tabPageStudents = new System.Windows.Forms.TabPage();
+			this.dgvStudents = new System.Windows.Forms.DataGridView();
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.tabPageDirections = new System.Windows.Forms.TabPage();
 			this.tabPageDiscipline = new System.Windows.Forms.TabPage();
 			this.tabPageTeacher = new System.Windows.Forms.TabPage();
+			this.statusStrip.SuspendLayout();
+			this.tabPageStudents.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
 			this.tabControl.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// statusStrip
 			// 
+			this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel});
 			this.statusStrip.Location = new System.Drawing.Point(0, 296);
 			this.statusStrip.Name = "statusStrip";
-			this.statusStrip.Size = new System.Drawing.Size(687, 22);
+			this.statusStrip.Size = new System.Drawing.Size(977, 22);
 			this.statusStrip.TabIndex = 0;
-			this.statusStrip.Text = "statusStrip1";
+			this.statusStrip.Text = "statusStrip";
+			// 
+			// toolStripStatusLabel
+			// 
+			this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+			this.toolStripStatusLabel.Size = new System.Drawing.Size(112, 17);
+			this.toolStripStatusLabel.Text = "toolStripStatusLabel";
 			// 
 			// tabPageGroups
 			// 
 			this.tabPageGroups.Location = new System.Drawing.Point(4, 22);
 			this.tabPageGroups.Name = "tabPageGroups";
 			this.tabPageGroups.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageGroups.Size = new System.Drawing.Size(679, 270);
+			this.tabPageGroups.Size = new System.Drawing.Size(969, 270);
 			this.tabPageGroups.TabIndex = 1;
 			this.tabPageGroups.Text = "Groups";
 			this.tabPageGroups.UseVisualStyleBackColor = true;
 			// 
 			// tabPageStudents
 			// 
+			this.tabPageStudents.Controls.Add(this.dgvStudents);
 			this.tabPageStudents.Location = new System.Drawing.Point(4, 22);
 			this.tabPageStudents.Name = "tabPageStudents";
 			this.tabPageStudents.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageStudents.Size = new System.Drawing.Size(679, 270);
+			this.tabPageStudents.Size = new System.Drawing.Size(969, 270);
 			this.tabPageStudents.TabIndex = 0;
 			this.tabPageStudents.Text = "Students";
 			this.tabPageStudents.UseVisualStyleBackColor = true;
+			// 
+			// dgvStudents
+			// 
+			this.dgvStudents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvStudents.Location = new System.Drawing.Point(0, 23);
+			this.dgvStudents.Name = "dgvStudents";
+			this.dgvStudents.Size = new System.Drawing.Size(963, 251);
+			this.dgvStudents.TabIndex = 0;
 			// 
 			// tabControl
 			// 
@@ -78,7 +103,7 @@
 			this.tabControl.Location = new System.Drawing.Point(0, 0);
 			this.tabControl.Name = "tabControl";
 			this.tabControl.SelectedIndex = 0;
-			this.tabControl.Size = new System.Drawing.Size(687, 296);
+			this.tabControl.Size = new System.Drawing.Size(977, 296);
 			this.tabControl.TabIndex = 1;
 			// 
 			// tabPageDirections
@@ -86,7 +111,7 @@
 			this.tabPageDirections.Location = new System.Drawing.Point(4, 22);
 			this.tabPageDirections.Name = "tabPageDirections";
 			this.tabPageDirections.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageDirections.Size = new System.Drawing.Size(679, 270);
+			this.tabPageDirections.Size = new System.Drawing.Size(969, 270);
 			this.tabPageDirections.TabIndex = 2;
 			this.tabPageDirections.Text = "Directions";
 			this.tabPageDirections.UseVisualStyleBackColor = true;
@@ -96,7 +121,7 @@
 			this.tabPageDiscipline.Location = new System.Drawing.Point(4, 22);
 			this.tabPageDiscipline.Name = "tabPageDiscipline";
 			this.tabPageDiscipline.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageDiscipline.Size = new System.Drawing.Size(679, 270);
+			this.tabPageDiscipline.Size = new System.Drawing.Size(969, 270);
 			this.tabPageDiscipline.TabIndex = 3;
 			this.tabPageDiscipline.Text = "Discipline";
 			this.tabPageDiscipline.UseVisualStyleBackColor = true;
@@ -106,7 +131,7 @@
 			this.tabPageTeacher.Location = new System.Drawing.Point(4, 22);
 			this.tabPageTeacher.Name = "tabPageTeacher";
 			this.tabPageTeacher.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageTeacher.Size = new System.Drawing.Size(679, 270);
+			this.tabPageTeacher.Size = new System.Drawing.Size(969, 270);
 			this.tabPageTeacher.TabIndex = 4;
 			this.tabPageTeacher.Text = "Teacher";
 			this.tabPageTeacher.UseVisualStyleBackColor = true;
@@ -115,12 +140,16 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(687, 318);
+			this.ClientSize = new System.Drawing.Size(977, 318);
 			this.Controls.Add(this.tabControl);
 			this.Controls.Add(this.statusStrip);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "MainForm";
 			this.Text = "Atomic Acadamy  P_421";
+			this.statusStrip.ResumeLayout(false);
+			this.statusStrip.PerformLayout();
+			this.tabPageStudents.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
 			this.tabControl.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -136,6 +165,8 @@
 		private System.Windows.Forms.TabPage tabPageDirections;
 		private System.Windows.Forms.TabPage tabPageDiscipline;
 		private System.Windows.Forms.TabPage tabPageTeacher;
+		private System.Windows.Forms.DataGridView dgvStudents;
+		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
 	}
 }
 
