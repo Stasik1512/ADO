@@ -8,6 +8,25 @@ namespace Academy
 	{
 		Connector connector;
 		DataGridView[] tables;
+		Query[] queries =
+		{
+			new Query
+				(
+					"stud_id,FORMATMESSAGE(N'%s %s %s', last_name, first_name,middle_name) AS N'Student',birth_date, group_name,direction_name",
+					"Students, Groups, Directions",
+					"[group] = group_id AND direction = direction_id"
+				),
+			new Query
+				(
+					"group_id, group_name, direction_name, start_date, start_time, learning_days ",
+					"Groups,Directions",
+					"direction = direction_id"
+				),
+			new Query("*", "Directions"),
+			new Query("*", "Disciplines"),
+			new Query("*", "Teachers")
+
+		};
 		public MainForm()
 		{
 			InitializeComponent();
@@ -28,7 +47,8 @@ namespace Academy
 		private void tabControl_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			int i = tabControl.SelectedIndex;
-			tables[i].DataSource = connector.Select("*",$"{tabControl.SelectedTab.Text}");
+			//tables[i].DataSource = connector.Select("*",$"{tabControl.SelectedTab.Text}");
+			tables[i].DataSource = connector.Load(queries[i].ToString());
 			toolStripStatusLabel.Text = $"Cound writing: {tables[i].RowCount - 1}";
 		}
 	}
