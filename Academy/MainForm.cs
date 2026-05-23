@@ -1,6 +1,8 @@
-﻿using System.Windows.Forms;
+﻿using DBtools;
+using System;
 using System.Configuration;
-using DBtools;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Academy
 {
@@ -29,6 +31,7 @@ namespace Academy
 		};
 		public MainForm()
 		{
+			AllocConsole();
 			InitializeComponent();
 			tables = new DataGridView[] { dgvStudents, dgvGroups,dgvDirections , dgvDisciplines, dgvTeachers };
 			connector = new Connector(ConfigurationManager.ConnectionStrings["P_421_Import"].ConnectionString);
@@ -42,7 +45,13 @@ namespace Academy
 			////	dgvStudents.DataSource = connector.Load("SELECT * FROM Students");
 			//toolStripStatusLabel.Text = $"Кол-во записей: {dgvStudents.RowCount - 1}";
 			tabControl_SelectedIndexChanged(tabControl, null);
+			///////////////////////////////////////////////////////////////////////////
+			cbGroupsDirections.DataSource = connector.Load("SELECT * FROM Directions");
+			cbGroupsDirections.DisplayMember = "direction_name";
+			cbGroupsDirections.ValueMember = "direction_id";
 		}
+		[DllImport("kernel32.dll")]
+		public static extern bool AllocConsole();
 
 		private void tabControl_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
@@ -50,6 +59,24 @@ namespace Academy
 			//tables[i].DataSource = connector.Select("*",$"{tabControl.SelectedTab.Text}");
 			tables[i].DataSource = connector.Load(queries[i].ToString());
 			toolStripStatusLabel.Text = $"Cound writing: {tables[i].RowCount - 1}";
+			//for(int c = 0;c < tables[i].ColumnCount-1;c++)
+			//	tables
+			tables[i].Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+		}
+
+		
+
+		private void cbGroupsDirections_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			//if (cbGroupsDirections.SelectedIndex >= 0)\
+			tables[1].DataSource = connector.Load(queries[1].ToString() + $" AND direction ={cbGroupsDirections.SelectedValue}"); //Обработка для комбобокса SelectionChangeCommitted
+
+			//Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedIndex}");
+			//Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedItem}");
+			//Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedText}");
+			//Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedValue}");  
+
 		}
 	}
 }
