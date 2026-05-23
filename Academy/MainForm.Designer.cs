@@ -43,6 +43,8 @@
 			this.dgvDisciplines = new System.Windows.Forms.DataGridView();
 			this.tabPageTeachers = new System.Windows.Forms.TabPage();
 			this.dgvTeachers = new System.Windows.Forms.DataGridView();
+			this.cbStudentsGroup = new System.Windows.Forms.ComboBox();
+			this.cbStudentDirection = new System.Windows.Forms.ComboBox();
 			this.statusStrip.SuspendLayout();
 			this.tabPageGroups.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvGroups)).BeginInit();
@@ -109,6 +111,8 @@
 			// 
 			// tabPageStudents
 			// 
+			this.tabPageStudents.Controls.Add(this.cbStudentDirection);
+			this.tabPageStudents.Controls.Add(this.cbStudentsGroup);
 			this.tabPageStudents.Controls.Add(this.dgvStudents);
 			this.tabPageStudents.Location = new System.Drawing.Point(4, 22);
 			this.tabPageStudents.Name = "tabPageStudents";
@@ -214,6 +218,25 @@
 			this.dgvTeachers.Size = new System.Drawing.Size(969, 246);
 			this.dgvTeachers.TabIndex = 0;
 			// 
+			// cbStudentsGroup
+			// 
+			this.cbStudentsGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbStudentsGroup.FormattingEnabled = true;
+			this.cbStudentsGroup.Location = new System.Drawing.Point(8, 3);
+			this.cbStudentsGroup.Name = "cbStudentsGroup";
+			this.cbStudentsGroup.Size = new System.Drawing.Size(143, 21);
+			this.cbStudentsGroup.TabIndex = 1;
+			// 
+			// cbStudentDirection
+			// 
+			this.cbStudentDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbStudentDirection.FormattingEnabled = true;
+			this.cbStudentDirection.Location = new System.Drawing.Point(157, 3);
+			this.cbStudentDirection.Name = "cbStudentDirection";
+			this.cbStudentDirection.Size = new System.Drawing.Size(266, 21);
+			this.cbStudentDirection.TabIndex = 2;
+			this.cbStudentDirection.SelectedIndexChanged += new System.EventHandler(this.cbStudentDirection_SelectedIndexChanged);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,6 +281,8 @@
 		private System.Windows.Forms.DataGridView dgvDisciplines;
 		private System.Windows.Forms.DataGridView dgvTeachers;
 		private System.Windows.Forms.ComboBox cbGroupsDirections;
+		private System.Windows.Forms.ComboBox cbStudentsGroup;
+		private System.Windows.Forms.ComboBox cbStudentDirection;
 	}
 }
 

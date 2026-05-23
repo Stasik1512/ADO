@@ -47,17 +47,25 @@ namespace Academy
 			//toolStripStatusLabel.Text = $"Кол-во записей: {dgvStudents.RowCount - 1}";
 			tabControl_SelectedIndexChanged(tabControl, null);
 			///////////////////////////////////////////////////////////////////////////
-			DataTable tGroupsDirection = connector.Load("SELECT * FROM Directions");
-			DataRow rowDefault = tGroupsDirection.NewRow();
-			rowDefault[0] = 0;
-			rowDefault[1] = "Все";
-			tGroupsDirection.Rows.InsertAt(rowDefault, 0);
-			cbGroupsDirections.DataSource = tGroupsDirection;
-			cbGroupsDirections.DisplayMember = "direction_name";
-			cbGroupsDirections.ValueMember = "direction_id";
+			LoadComboBoxFromBase(cbGroupsDirections, "Directions");
+			LoadComboBoxFromBase(cbStudentsGroup, "Groups");
+			LoadComboBoxFromBase(cbStudentDirection, "Directions");
 		}
 		[DllImport("kernel32.dll")]
 		public static extern bool AllocConsole();
+		void LoadComboBoxFromBase(ComboBox comboBox, string table)
+		{
+			string column = table.Substring(0, table.Length - 1).ToLower();
+			DataTable dt = connector.Load($"SELECT {column}_id,{column}_name FROM {table}");
+			DataRow rowDefault = dt.NewRow();
+			rowDefault[0] = 0;
+			rowDefault[1] = "Все";
+			for (int i = 2; i < dt.Columns.Count; i++) rowDefault[i] = 0;
+			dt.Rows.InsertAt(rowDefault, 0);
+			comboBox.DataSource = dt;
+			comboBox.DisplayMember = $"{column}_name";
+			comboBox.ValueMember = $"{column}_id";
+		}
 
 		private void tabControl_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
@@ -89,6 +97,11 @@ namespace Academy
 			//Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedItem}");
 			//Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedText}");
 			//Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedValue}");  
+
+		}
+
+		private void cbStudentDirection_SelectedIndexChanged(object sender, EventArgs e)
+		{
 
 		}
 	}
