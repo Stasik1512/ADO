@@ -53,10 +53,12 @@ namespace Academy
 		}
 		[DllImport("kernel32.dll")]
 		public static extern bool AllocConsole();
-		void LoadComboBoxFromBase(ComboBox comboBox, string table)
+		void LoadComboBoxFromBase(ComboBox comboBox, string table, string condition = "")
 		{
 			string column = table.Substring(0, table.Length - 1).ToLower();
-			DataTable dt = connector.Load($"SELECT {column}_id,{column}_name FROM {table}");
+			string cmd = $"SELECT {column}_id,{column}_name FROM {table}";
+			if (condition != "") cmd += $" WHERE {condition}";
+			DataTable dt = connector.Load(cmd);
 			DataRow rowDefault = dt.NewRow();
 			rowDefault[0] = 0;
 			rowDefault[1] = "Все";
@@ -104,6 +106,7 @@ namespace Academy
 
 		private void cbStudentsGroup_SelectionChangeCommitted(object sender, EventArgs e)
 		{
+			if (cbStudentsGroup.SelectedIndex == 0) cbStudentDirection_SelectionChangeCommitted(cbStudentDirection, null);
 			tables[0].DataSource = connector.Load
 				(
 					queries[0].ToString() + (cbStudentsGroup.SelectedIndex == 0 ? "" : $" AND [group]={cbStudentsGroup.SelectedValue}")
@@ -114,9 +117,9 @@ namespace Academy
 		{
 			tables[0].DataSource = connector.Load
 				(
-					queries[0].ToString() + (cbStudentDirection.SelectedIndex == 0 ? "" : $" AND [direction] = {cbStudentDirection.SelectedValue}")
-
+					queries[0].ToString() + (cbStudentDirection.SelectedIndex == 0 ? "" : $" AND direction = {cbStudentDirection.SelectedValue}")
 				);
+			LoadComboBoxFromBase(cbStudentsGroup, "Groups", (cbStudentDirection.SelectedIndex == 0 ? "" : $" direction = {cbStudentDirection.SelectedValue}"));
 		}
 	}
 }
