@@ -99,6 +99,7 @@ namespace Academy
 			//Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedItem}");
 			//Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedText}");
 			//Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedValue}");  
+			toolStripStatusLabel.Text = $"Cound writing: {tables[1].RowCount - 1}";
 
 		}
 
@@ -111,6 +112,7 @@ namespace Academy
 				(
 					queries[0].ToString() + (cbStudentsGroup.SelectedIndex == 0 ? "" : $" AND [group]={cbStudentsGroup.SelectedValue}")
 				);
+			toolStripStatusLabel.Text = $"Cound writing: {tables[0].RowCount - 1}";
 		}
 
 		private void cbStudentDirection_SelectionChangeCommitted(object sender, EventArgs e)
@@ -120,6 +122,7 @@ namespace Academy
 					queries[0].ToString() + (cbStudentDirection.SelectedIndex == 0 ? "" : $" AND direction = {cbStudentDirection.SelectedValue}")
 				);
 			LoadComboBoxFromBase(cbStudentsGroup, "Groups", (cbStudentDirection.SelectedIndex == 0 ? "" : $" direction = {cbStudentDirection.SelectedValue}"));
+			toolStripStatusLabel.Text = $"Cound writing: {tables[0].RowCount - 1}";
 		}
 	}
 }

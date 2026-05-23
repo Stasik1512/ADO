@@ -91,7 +91,7 @@
 			// 
 			this.cbGroupsDirections.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbGroupsDirections.FormattingEnabled = true;
-			this.cbGroupsDirections.Location = new System.Drawing.Point(8, 6);
+			this.cbGroupsDirections.Location = new System.Drawing.Point(157, 3);
 			this.cbGroupsDirections.Name = "cbGroupsDirections";
 			this.cbGroupsDirections.Size = new System.Drawing.Size(370, 21);
 			this.cbGroupsDirections.TabIndex = 1;
