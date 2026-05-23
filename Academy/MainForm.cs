@@ -1,6 +1,7 @@
 ﻿using DBtools;
 using System;
 using System.Configuration;
+using System.Data;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -46,7 +47,12 @@ namespace Academy
 			//toolStripStatusLabel.Text = $"Кол-во записей: {dgvStudents.RowCount - 1}";
 			tabControl_SelectedIndexChanged(tabControl, null);
 			///////////////////////////////////////////////////////////////////////////
-			cbGroupsDirections.DataSource = connector.Load("SELECT * FROM Directions");
+			DataTable tGroupsDirection = connector.Load("SELECT * FROM Directions");
+			DataRow rowDefault = tGroupsDirection.NewRow();
+			rowDefault[0] = 0;
+			rowDefault[1] = "Все";
+			tGroupsDirection.Rows.InsertAt(rowDefault, 0);
+			cbGroupsDirections.DataSource = tGroupsDirection;
 			cbGroupsDirections.DisplayMember = "direction_name";
 			cbGroupsDirections.ValueMember = "direction_id";
 		}
@@ -57,7 +63,10 @@ namespace Academy
 		{
 			int i = tabControl.SelectedIndex;
 			//tables[i].DataSource = connector.Select("*",$"{tabControl.SelectedTab.Text}");
-			tables[i].DataSource = connector.Load(queries[i].ToString());
+			tables[i].DataSource = connector.Load
+				(
+				queries[i].ToString()// + (cbGroupsDirections.SelectedIndex == 0 ? "" : $"AND direction={cbGroupsDirections.SelectedValue}")
+				);
 			toolStripStatusLabel.Text = $"Cound writing: {tables[i].RowCount - 1}";
 			//for(int c = 0;c < tables[i].ColumnCount-1;c++)
 			//	tables
@@ -70,7 +79,11 @@ namespace Academy
 		private void cbGroupsDirections_SelectionChangeCommitted(object sender, EventArgs e)
 		{
 			//if (cbGroupsDirections.SelectedIndex >= 0)\
-			tables[1].DataSource = connector.Load(queries[1].ToString() + $" AND direction ={cbGroupsDirections.SelectedValue}"); //Обработка для комбобокса SelectionChangeCommitted
+			tables[1].DataSource = connector.Load
+				(
+				queries[1].ToString() + (cbGroupsDirections.SelectedIndex == 0 ? "" : $" AND direction={cbGroupsDirections.SelectedValue}")
+				//$" AND direction={cbGroupsDirections.SelectedValue}"
+				); //Обработка для комбобокса SelectionChangeCommitted
 
 			//Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedIndex}");
 			//Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedItem}");
