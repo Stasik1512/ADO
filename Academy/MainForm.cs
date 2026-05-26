@@ -124,5 +124,11 @@ namespace Academy
 			LoadComboBoxFromBase(cbStudentsGroup, "Groups", (cbStudentDirection.SelectedIndex == 0 ? "" : $" direction = {cbStudentDirection.SelectedValue}"));
 			toolStripStatusLabel.Text = $"Cound writing: {tables[0].RowCount - 1}";
 		}
+
+		private void btnAddStudent_Click(object sender, EventArgs e)
+		{
+			HumanForm humanForm = new HumanForm();
+			humanForm.ShowDialog();
+		}
 	}
 }
