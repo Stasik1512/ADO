@@ -45,6 +45,7 @@
 			this.dgvDisciplines = new System.Windows.Forms.DataGridView();
 			this.tabPageTeachers = new System.Windows.Forms.TabPage();
 			this.dgvTeachers = new System.Windows.Forms.DataGridView();
+			this.buttonAddStudent = new System.Windows.Forms.Button();
 			this.statusStrip.SuspendLayout();
 			this.tabPageGroups.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvGroups)).BeginInit();
@@ -111,6 +112,7 @@
 			// 
 			// tabPageStudents
 			// 
+			this.tabPageStudents.Controls.Add(this.buttonAddStudent);
 			this.tabPageStudents.Controls.Add(this.cbStudentDirection);
 			this.tabPageStudents.Controls.Add(this.cbStudentsGroup);
 			this.tabPageStudents.Controls.Add(this.dgvStudents);
@@ -238,6 +240,16 @@
 			this.dgvTeachers.Size = new System.Drawing.Size(969, 246);
 			this.dgvTeachers.TabIndex = 0;
 			// 
+			// buttonAddStudent
+			// 
+			this.buttonAddStudent.Location = new System.Drawing.Point(762, 3);
+			this.buttonAddStudent.Name = "buttonAddStudent";
+			this.buttonAddStudent.Size = new System.Drawing.Size(199, 23);
+			this.buttonAddStudent.TabIndex = 3;
+			this.buttonAddStudent.Text = "Добавить студента";
+			this.buttonAddStudent.UseVisualStyleBackColor = true;
+			this.buttonAddStudent.Click += new System.EventHandler(this.buttonAddStudent_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,6 +296,7 @@
 		private System.Windows.Forms.ComboBox cbGroupsDirections;
 		private System.Windows.Forms.ComboBox cbStudentsGroup;
 		private System.Windows.Forms.ComboBox cbStudentDirection;
+		private System.Windows.Forms.Button buttonAddStudent;
 	}
 }
 

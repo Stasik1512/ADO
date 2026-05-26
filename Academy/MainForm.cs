@@ -81,7 +81,9 @@ namespace Academy
 			//for(int c = 0;c < tables[i].ColumnCount-1;c++)
 			//	tables
 			tables[i].Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+			tables[i].Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
+			//(sender as TabControl).SelectedTab.Container 
 		}
 
 		
@@ -123,6 +125,20 @@ namespace Academy
 				);
 			LoadComboBoxFromBase(cbStudentsGroup, "Groups", (cbStudentDirection.SelectedIndex == 0 ? "" : $" direction = {cbStudentDirection.SelectedValue}"));
 			toolStripStatusLabel.Text = $"Cound writing: {tables[0].RowCount - 1}";
+		}
+
+		private void buttonAddStudent_Click(object sender, EventArgs e)
+		{
+			AddStudentForm form = new AddStudentForm();
+
+			if (form.ShowDialog() == DialogResult.OK)
+			{
+				tables[0].DataSource =
+				 connector.Load(queries[0].ToString());
+
+				toolStripStatusLabel.Text =
+				 $"Cound writing: {tables[0].RowCount - 1}";
+			}
 		}
 	}
 }

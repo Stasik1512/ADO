@@ -1,0 +1,2 @@
+﻿SELECT stud_id,FORMATMESSAGE(N'%s %s %s', last_name, first_name,middle_name) AS N'Student',birth_date, group_name,direction_name 
+FROM Students, Groups, Directions WHERE [group] = group_id AND direction = direction_idAND direction=
