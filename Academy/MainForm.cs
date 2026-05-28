@@ -47,27 +47,28 @@ namespace Academy
 			//toolStripStatusLabel.Text = $"Кол-во записей: {dgvStudents.RowCount - 1}";
 			tabControl_SelectedIndexChanged(tabControl, null);
 			///////////////////////////////////////////////////////////////////////////
-			LoadComboBoxFromBase(cbGroupsDirections, "Directions");
-			LoadComboBoxFromBase(cbStudentsGroup, "Groups");
-			LoadComboBoxFromBase(cbStudentDirection, "Directions");
+			
+			DataBase.LoadComboBoxFromBase(cbGroupsDirections, "Directions");
+			DataBase.LoadComboBoxFromBase(cbStudentsGroup, "Groups");
+			DataBase.LoadComboBoxFromBase(cbStudentDirection, "Directions");
 		}
 		[DllImport("kernel32.dll")]
 		public static extern bool AllocConsole();
-		void LoadComboBoxFromBase(ComboBox comboBox, string table, string condition = "")
-		{
-			string column = table.Substring(0, table.Length - 1).ToLower();
-			string cmd = $"SELECT {column}_id,{column}_name FROM {table}";
-			if (condition != "") cmd += $" WHERE {condition}";
-			DataTable dt = connector.Load(cmd);
-			DataRow rowDefault = dt.NewRow();
-			rowDefault[0] = 0;
-			rowDefault[1] = "Все";
-			for (int i = 2; i < dt.Columns.Count; i++) rowDefault[i] = 0;
-			dt.Rows.InsertAt(rowDefault, 0);
-			comboBox.DataSource = dt;
-			comboBox.DisplayMember = $"{column}_name";
-			comboBox.ValueMember = $"{column}_id";
-		}
+		//void LoadComboBoxFromBase(ComboBox comboBox, string table, string condition = "")
+		//{
+		//	string column = table.Substring(0, table.Length - 1).ToLower();
+		//	string cmd = $"SELECT {column}_id,{column}_name FROM {table}";
+		//	if (condition != "") cmd += $" WHERE {condition}";
+		//	DataTable dt = connector.Load(cmd);
+		//	DataRow rowDefault = dt.NewRow();
+		//	rowDefault[0] = 0;
+		//	rowDefault[1] = "Все";
+		//	for (int i = 2; i < dt.Columns.Count; i++) rowDefault[i] = 0;
+		//	dt.Rows.InsertAt(rowDefault, 0);
+		//	comboBox.DataSource = dt;
+		//	comboBox.DisplayMember = $"{column}_name";
+		//	comboBox.ValueMember = $"{column}_id";
+		//}
 
 		private void tabControl_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
@@ -121,7 +122,7 @@ namespace Academy
 				(
 					queries[0].ToString() + (cbStudentDirection.SelectedIndex == 0 ? "" : $" AND direction = {cbStudentDirection.SelectedValue}")
 				);
-			LoadComboBoxFromBase(cbStudentsGroup, "Groups", (cbStudentDirection.SelectedIndex == 0 ? "" : $" direction = {cbStudentDirection.SelectedValue}"));
+			DataBase.LoadComboBoxFromBase(cbStudentsGroup, "Groups", (cbStudentDirection.SelectedIndex == 0 ? "" : $" direction = {cbStudentDirection.SelectedValue}"));
 			toolStripStatusLabel.Text = $"Cound writing: {tables[0].RowCount - 1}";
 		}
 
