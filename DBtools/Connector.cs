@@ -5,7 +5,7 @@ using System.Net.Configuration;
 
 namespace DBtools
 {
-	public class Connector
+	public class Connector   
 	{
 		static SqlConnection connection;
 		public Connector(string connection_string)

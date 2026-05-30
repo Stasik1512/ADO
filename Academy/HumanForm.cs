@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBtools;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,7 @@ namespace Academy
 		public HumanForm()
 		{
 			InitializeComponent();
+			
 		}
 		protected virtual void Compress()
 		{

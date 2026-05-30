@@ -47,7 +47,7 @@ namespace Academy.Models
 		}
 		public virtual string GetNames()
 		{
-			return "last_name, first_name, middle_name,birth_date,email,photo";
+			return "last_name, first_name, middle_name,birth_date,email,phone";
 		}
 		public virtual string GetValues()
 		{
