@@ -137,7 +137,12 @@ namespace Academy
 
 		private void btnAddTeacher_Click(object sender, EventArgs e)
 		{
-
+			TeacherForm teacherForm = new TeacherForm();
+			if (teacherForm.ShowDialog() == DialogResult.OK)
+			{
+				tabControl_SelectedIndexChanged(tabControl, null);
+			}
 		}
+	
 	}
 }
