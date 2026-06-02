@@ -10,6 +10,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.IO;
+
 namespace Academy
 {
 	public partial class HumanForm : Form
@@ -46,6 +48,14 @@ namespace Academy
 		{
 			ToolTip tt = new ToolTip();
 			tt.SetToolTip(pictureBoxPhoto, "Сделайте двойной щелчек мышью");// Подсказка при наводке мышью на pictureBox
+		}
+
+		private void pictureBoxPhoto_MouseDoubleClick(object sender, MouseEventArgs e)
+		{
+			OpenFileDialog dialog = new OpenFileDialog();
+			if(dialog.ShowDialog() == DialogResult.OK)
+				pictureBoxPhoto.Image = Image.FromFile(dialog.FileName);
+			
 		}
 	}
 }

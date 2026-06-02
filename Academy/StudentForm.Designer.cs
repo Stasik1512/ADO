@@ -30,7 +30,11 @@
 		{
 			this.cbGroups = new System.Windows.Forms.ComboBox();
 			this.LabelGroup = new System.Windows.Forms.Label();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhoto)).BeginInit();
 			this.SuspendLayout();
+			// 
+			// pictureBoxPhoto
+			// 
 			// 
 			// cbGroups
 			// 
@@ -61,8 +65,10 @@
 			this.Controls.Add(this.cbGroups);
 			this.Name = "StudentForm";
 			this.Text = "StudentForm";
+			this.Controls.SetChildIndex(this.pictureBoxPhoto, 0);
 			this.Controls.SetChildIndex(this.cbGroups, 0);
 			this.Controls.SetChildIndex(this.LabelGroup, 0);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhoto)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
