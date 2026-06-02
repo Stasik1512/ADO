@@ -37,7 +37,11 @@ namespace Academy
 				DataBase.connector.UploadPhoto(student.SerializePhoto(), student.id,"photo", "Students");
 			
 		}
+		public StudentForm(int id) : this() // this - вызывает конструктор по умолчанию
+		{
+			DataTable data = DataBase.connector.Load("*", "Students", $"stud_id = {id}");
+			//TODO Etract student's data to form
+		}
 
-		
 	}
 }
