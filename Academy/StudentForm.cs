@@ -26,7 +26,13 @@ namespace Academy
 		{
 			base.buttonOK_Click(sender, e);
 			student = new Models.Student(human, (int)cbGroups.SelectedValue);
-			DataBase.connector.Insert($"INSERT Students({student.GetNames()}) VALUES({student.GetValues()})");
+			DataBase.connector.Scalar
+				(
+					$"INSERT Students({student.GetNames()}) VALUES({student.GetValues()}); SELECT SCOPE_INDENTITY();"
+				); 
+			if (pictureBoxPhoto.Image != null)
+				DataBase.connector.UploadPhoto(student.SerializePhoto(), student.id,"photo", "Students");
+			
 		}
 	}
 }

@@ -204,6 +204,7 @@
 			this.pictureBoxPhoto.Size = new System.Drawing.Size(206, 229);
 			this.pictureBoxPhoto.TabIndex = 13;
 			this.pictureBoxPhoto.TabStop = false;
+			this.pictureBoxPhoto.MouseHover += new System.EventHandler(this.pictureBoxPhoto_MouseHover);
 			// 
 			// labelID
 			// 
@@ -264,7 +265,7 @@
 		private System.Windows.Forms.TextBox tbPhone;
 		private System.Windows.Forms.Button buttonOK;
 		private System.Windows.Forms.Button buttonCancel;
-		private System.Windows.Forms.PictureBox pictureBoxPhoto;
 		private System.Windows.Forms.Label labelID;
+		protected System.Windows.Forms.PictureBox pictureBoxPhoto;
 	}
 }

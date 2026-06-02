@@ -5,18 +5,19 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.IO;
 namespace Academy.Models
 {
 	internal class Human
 	{
-		int id;
-		string last_name;
-		string first_name;
-		string middle_name;
-		string birth_date;
-		string email;
-		string phone;
-		Image photo;
+		internal int id;
+		internal string last_name;
+		internal string first_name;
+		internal string middle_name;
+		internal string birth_date;
+		internal string email;
+		internal string phone;
+		internal Image photo;
 		public Human
 			(
 				int id, string last_name, string first_name, string middle_name,
@@ -52,6 +53,14 @@ namespace Academy.Models
 		public virtual string GetValues()
 		{
 			return $"N'{last_name}',N'{first_name}',N'{middle_name}',N'{birth_date}',N'{email}',N'{phone}'";
+		}
+		public byte[] SerializePhoto()
+		{
+			using (MemoryStream ms = new MemoryStream())
+			{
+				photo.Save(ms, photo.RawFormat);
+				return ms.ToArray();
+			}
 		}
 	}
 }
