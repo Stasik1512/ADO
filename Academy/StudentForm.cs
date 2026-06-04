@@ -22,6 +22,12 @@ namespace Academy
 			DataBase.LoadComboBoxFromBase(cbGroups, "Groups"); 
 			
 		}
+		public StudentForm(int id) : this() // this - вызывает конструктор по умолчанию
+		{
+			DataTable data = DataBase.connector.Load("*", "Students", $"stud_id = {id}");
+			human = student = new Models.Student(data.Rows[0].ItemArray);
+			Exctract();
+		}
 		protected override void buttonOK_Click(object sender, EventArgs e)
 		{
 			base.buttonOK_Click(sender, e);
@@ -35,12 +41,12 @@ namespace Academy
 				); 
 			if (pictureBoxPhoto.Image != null)
 				DataBase.connector.UploadPhoto(student.SerializePhoto(), student.id,"photo", "Students");
-			
 		}
-		public StudentForm(int id) : this() // this - вызывает конструктор по умолчанию
+
+		protected override void Exctract()
 		{
-			DataTable data = DataBase.connector.Load("*", "Students", $"stud_id = {id}");
-			//TODO Etract student's data to form
+			base.Exctract();
+			cbGroups.SelectedValue = student.group;
 		}
 
 	}

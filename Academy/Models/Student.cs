@@ -8,7 +8,7 @@ namespace Academy.Models
 {
 	internal class Student : Human
 	{
-		int group;
+		internal int group;
 		public Student
 			(
 				int id, string last_name, string first_name, string middle_name,
@@ -16,6 +16,10 @@ namespace Academy.Models
 			): base (id, last_name, first_name, middle_name, bitrh_date , email, phone, photo)
 		{
 			this.group = group;
+		}
+		public Student(object[] values) : base (values)
+		{
+			this.group = (int)values[8];
 		}
 		public Student(Human human,int group): base(human)
 		{

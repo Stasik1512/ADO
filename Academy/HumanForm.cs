@@ -36,14 +36,23 @@ namespace Academy
 					tbPhone.Text,
 					pictureBoxPhoto.Image
 				);
-
+		}
+		protected virtual void	Exctract()
+		{
+			this.labelID.Text = $"ID: {human.id}";
+			this.tbLastName.Text = human.last_name;
+			this.tbFirstName.Text = human.first_name;
+			this.tbMiddleName.Text = human.middle_name;
+			this.dtpBirthDate.Value = Convert.ToDateTime(human.birth_date);
+			this.tbemail.Text = human.email;
+			this.tbPhone.Text = human.phone;
+			this.pictureBoxPhoto.Image = human.photo;
 		}
 
 		protected virtual void buttonOK_Click(object sender, EventArgs e)
 		{
 			Compress();
 		}
-
 		private void pictureBoxPhoto_MouseHover(object sender, EventArgs e)
 		{
 			ToolTip tt = new ToolTip();
@@ -57,5 +66,7 @@ namespace Academy
 				pictureBoxPhoto.Image = Image.FromFile(dialog.FileName);
 			
 		}
+
+		
 	}
 }
