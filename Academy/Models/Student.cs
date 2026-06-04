@@ -33,5 +33,9 @@ namespace Academy.Models
 		{
 			return base.GetValues() + $",{group}";
 		}
+		public override string GetUpdateExpression()
+		{
+			return base.GetUpdateExpression() + $",[group]={group}";
+		}
 	}
 }

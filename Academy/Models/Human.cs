@@ -53,8 +53,8 @@ namespace Academy.Models
 			this.first_name		= values[2].ToString();
 			this.middle_name	= values[3].ToString();
 			this.birth_date		= Convert.ToDateTime(values[4]).ToString("yyyy-MM-dd");
-			this.email			= values[1].ToString();
-			this.phone			= values[1].ToString();
+			this.email			= values[5].ToString();
+			this.phone			= values[6].ToString();
 			if (values[7] as byte[] != null)
 			{
 				MemoryStream ms = new MemoryStream(values[7] as byte[]);
@@ -69,6 +69,16 @@ namespace Academy.Models
 		public virtual string GetValues()
 		{
 			return $"N'{last_name}',N'{first_name}',N'{middle_name}',N'{birth_date}',N'{email}',N'{phone}'";
+		}
+		public virtual string GetUpdateExpression()
+		{
+			return
+				$"last_name = N'{last_name}'," +
+				$"first_name = N'{first_name}'," +
+				$"middle_name = N'{middle_name}'," +
+				$"birth_date = N'{birth_date}'," +
+				$"email = N'{email}'," +
+				$"phone = N'{phone}'";
 		}
 		public byte[] SerializePhoto()
 		{
