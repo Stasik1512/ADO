@@ -59,7 +59,7 @@ namespace Academy.Models
 			{
 				MemoryStream ms = new MemoryStream(values[7] as byte[]);
 				this.photo = Image.FromStream(ms);
-				ms.Dispose();
+				//ms.Dispose();
 			}
 		}
 		public virtual string GetNames()
