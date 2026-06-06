@@ -96,10 +96,10 @@ namespace Academy
 				//$" AND direction={cbGroupsDirections.SelectedValue}"
 				); //Обработка для комбобокса SelectionChangeCommitted
 
-			//Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedIndex}");
-			//Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedItem}");
-			//Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedText}");
-			//Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedValue}");  
+			/*Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedIndex}");
+			Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedItem}");
+			Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedText}");
+			Console.WriteLine($"SelectedIndex: {cbGroupsDirections.SelectedValue}"); */
 			toolStripStatusLabel.Text = $"Cound writing: {tables[1].RowCount - 1}";
 
 		}
@@ -148,6 +148,15 @@ namespace Academy
 
 			dgvStudents.Rows[e.RowIndex].Selected = true;
 			dgvStudents.FirstDisplayedScrollingRowIndex = firstDisplayintRow;
+		}
+
+		private void btnAddTeacher_Click(object sender, EventArgs e)
+		{
+			TeacherForm teacherForm = new TeacherForm();
+			if (teacherForm.ShowDialog() == DialogResult.OK)
+			{
+				tabControl_SelectedIndexChanged(tabControl, null);
+			}
 		}
 	}
 }
