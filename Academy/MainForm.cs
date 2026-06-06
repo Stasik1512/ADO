@@ -132,7 +132,10 @@ namespace Academy
 			if(studentForm.ShowDialog()== DialogResult.OK)
 			{
 				tabControl_SelectedIndexChanged(tabControl, null);
+				dgvStudents.Rows[dgvStudents.RowCount - 2].Selected = true;
+				dgvStudents.FirstDisplayedScrollingRowIndex = dgvStudents.RowCount - 2;
 			}
+
 		}
 
 		private void dgvStudents_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

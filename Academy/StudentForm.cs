@@ -17,6 +17,7 @@ namespace Academy
 		public StudentForm()
 		{
 			InitializeComponent();
+			this.Text = "Добавление нового студента: ";
 			//cbGroups.DataSource = DataBase.connector.Select($"SELECT group_id, group_name FROM Groups");
 			//cbGroups.DisplayMember = "group_name";
 			//cbGroups.ValueMember = "group_id";
@@ -26,6 +27,7 @@ namespace Academy
 		public StudentForm(int id) : this() // this - вызывает конструктор по умолчанию
 		{
 			DataTable data = DataBase.connector.Load("*", "Students", $"stud_id = {id}");
+			this.Text = "Редактирование студента: ";
 			human = student = new Models.Student(data.Rows[0].ItemArray);
 			Exctract();
 		}

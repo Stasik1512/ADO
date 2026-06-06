@@ -177,7 +177,7 @@
 			// 
 			this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.buttonOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.buttonOK.Location = new System.Drawing.Point(515, 301);
+			this.buttonOK.Location = new System.Drawing.Point(515, 311);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(87, 34);
 			this.buttonOK.TabIndex = 11;
@@ -189,7 +189,7 @@
 			// 
 			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.buttonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.buttonCancel.Location = new System.Drawing.Point(608, 301);
+			this.buttonCancel.Location = new System.Drawing.Point(608, 311);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(99, 34);
 			this.buttonCancel.TabIndex = 12;
@@ -201,7 +201,7 @@
 			this.pictureBoxPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pictureBoxPhoto.Location = new System.Drawing.Point(501, 12);
 			this.pictureBoxPhoto.Name = "pictureBoxPhoto";
-			this.pictureBoxPhoto.Size = new System.Drawing.Size(206, 229);
+			this.pictureBoxPhoto.Size = new System.Drawing.Size(206, 268);
 			this.pictureBoxPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBoxPhoto.TabIndex = 13;
 			this.pictureBoxPhoto.TabStop = false;
@@ -222,7 +222,7 @@
 			this.AcceptButton = this.buttonOK;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(719, 347);
+			this.ClientSize = new System.Drawing.Size(740, 364);
 			this.Controls.Add(this.labelID);
 			this.Controls.Add(this.pictureBoxPhoto);
 			this.Controls.Add(this.buttonCancel);
