@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
+using System.Security.AccessControl;
 namespace Academy.Models
 {
 	internal class Human
