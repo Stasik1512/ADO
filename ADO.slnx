@@ -2,6 +2,7 @@
   <Project Path="Academy/Academy.csproj" Id="a6775e55-98fd-4efe-b011-365547529ae0">
     <BuildDependency Project="DBtools/DBtools.csproj" />
   </Project>
+  <Project Path="AcademyWPF/AcademyWPF.csproj" Id="18b95169-841f-4a2c-a109-b5f8efd5de47" />
   <Project Path="ADO/ADO.csproj" Id="ff10d43b-e010-44a5-939a-c6e5285092b0" />
   <Project Path="Check/Check.csproj" Id="a97d74e5-e486-45d8-ae04-6212e2313110">
     <BuildDependency Project="DBtools/DBtools.csproj" />
