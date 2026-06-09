@@ -19,6 +19,14 @@ namespace Academy
 			InitializeComponent();
 			this.Text = "Добавление нового преподавателя: ";
 		}
+		public TeacherForm(int id) : this()
+		{
+			DataTable data = DataBase.connector.Load("*", "Teachers", $"teacher_id = {id}");
+			this.Text = "Редактирование преподавателя";
+
+			human = teacher = new Models.Teacher(data.Rows[0].ItemArray);
+			Extract();
+		}
 
 		//protected override void Compress()
 		//{
@@ -26,9 +34,9 @@ namespace Academy
 		//	teacher.work_since = dtpWorkSince.Value.ToString();
 		//	teacher.rate = mtbRate.Text;
 		//}
-		protected override void Exctract()
+		protected override void Extract()
 		{
-			base.Exctract();
+			base.Extract();
 			dtpWorkSince.Value = Convert.ToDateTime(teacher.work_since);
 			mtbRate.Text = teacher.rate;
 		}

@@ -29,7 +29,7 @@ namespace Academy
 			DataTable data = DataBase.connector.Load("*", "Students", $"stud_id = {id}");
 			this.Text = "Редактирование студента: ";
 			human = student = new Models.Student(data.Rows[0].ItemArray);
-			Exctract();
+			Extract();
 		}
 		protected override void buttonOK_Click(object sender, EventArgs e)
 		{
@@ -49,9 +49,9 @@ namespace Academy
 
 		}
 
-		protected override void Exctract()
+		protected override void Extract()
 		{
-			base.Exctract();
+			base.Extract();
 			cbGroups.SelectedValue = student.group;
 		}
 

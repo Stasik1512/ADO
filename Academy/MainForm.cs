@@ -140,6 +140,7 @@ namespace Academy
 
 		private void dgvStudents_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
 		{
+			if(e.RowIndex < 0 ||  e.ColumnIndex < 0) return; // чтобы код не падал при двойном щелчке по полям 
 			int id = Convert.ToInt32(dgvStudents.Rows[e.RowIndex].Cells[0].Value);
 			int firstDisplayintRow = dgvStudents.FirstDisplayedScrollingRowIndex;
 			StudentForm studentForm = new StudentForm(id);
@@ -157,6 +158,21 @@ namespace Academy
 			{
 				tabControl_SelectedIndexChanged(tabControl, null);
 			}
+		}
+
+		private void dgvTeachers_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+		{
+			if (e.RowIndex < 0 || e.ColumnIndex < 0) return;  // чтобы код не падал при двойном щелчке по полям 
+			int id = Convert.ToInt32(dgvTeachers.Rows[e.RowIndex].Cells[0].Value);
+			Console.WriteLine(id);
+			int firstDisplayintRows = dgvTeachers.FirstDisplayedScrollingRowIndex;
+			TeacherForm teacherForm = new TeacherForm(id);
+			if (teacherForm.ShowDialog() == DialogResult.OK)
+			{
+				tabControl_SelectedIndexChanged(tabControl, null);
+			}
+			dgvTeachers.Rows[e.RowIndex].Selected = true;
+			dgvTeachers.FirstDisplayedScrollingColumnIndex = firstDisplayintRows;
 		}
 	}
 }
